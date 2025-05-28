@@ -9,7 +9,7 @@ Output: Yes
 
 Explanation : There are a total of 3 vertices in the graph. There is an edge between vertex 1 and 2, vertex 2 and 3 and vertex 1 and 3. So, there exists a cycle in the graph. 
  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+                                                              BFS APPROACH
 #include<unordered_map>
 #include<queue>
 #include<list>
@@ -63,6 +63,57 @@ string cycleDetection (vector<vector<int>>& edges, int n, int m) //main statemen
  for(int i=0; i<n; i++){
      if(!visited[i]){
          bool ans= isCyclicBFS(i, visited, adjList);
+         if(ans==1)
+         return "Yes";
+     }
+ }
+ return "No";
+ }
+------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                             DFS APPROACH
+ #include<unordered_map>
+#include<queue>
+#include<list>
+#include<string>
+#include<vector>
+
+bool isCyclicDFS(int Node, int parent,unordered_map<int, bool>& visited, unordered_map<int, list<int>>& adjList
+){
+ visited[Node]=true;
+ for(auto neighbour: adjList[Node]){
+     if(!visited[neighbour]){
+         bool cycleDetected= isCyclicDFS(neighbour,Node, visited, adjList);
+         if(cycleDetected)
+         return true;
+     }
+     else if (neighbour!=parent){
+         //cycle present
+       return true;
+     }
+ }
+ return false;
+}
+
+
+
+
+string cycleDetection (vector<vector<int>>& edges, int n, int m) //main statement
+{
+    // create adjacency list
+    unordered_map<int, list<int>>adjList;
+    for(int i=0; i<m; i++){
+    int u=edges[i][0];
+    int v=edges[i][1];
+
+    adjList[u].push_back(v);
+    adjList[v].push_back(u);
+
+        }
+ //to handle disconnected components
+ unordered_map<int,bool>visited;
+ for(int i=0; i<n; i++){
+     if(!visited[i]){
+         bool ans= isCyclicDFS(i,-1, visited, adjList);
          if(ans==1)
          return "Yes";
      }
