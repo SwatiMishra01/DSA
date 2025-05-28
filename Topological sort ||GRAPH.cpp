@@ -6,7 +6,7 @@
 #include<vector>
 #include<stack>
 
-void topological_sort(int node,  unordered_map<int,bool>&visited, stack<int>&s,
+void topological_sort(int node, vector<bool>&visited, stack<int>&s,
 unordered_map<int,list<int>>&adj){
     visited[node]=true;
     for(auto neighbour:adj[node]){
@@ -31,7 +31,7 @@ vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)  {
     }
 
     //call dfs topological sort util function for all components
-    unordered_map<int,bool>visited;
+    vector<bool>visited(v); //unordered_map islie nhi liya quki bht time lera tha execute hone m
     stack<int>s;
     for ( int i=0; i<v; i++){
          if(!visited[i])
