@@ -1,5 +1,6 @@
 # https://www.naukri.com/code360/problems/detect-cycle-in-a-directed-graph_1062626?leftPanelTab=0&utm_source=youtube&utm_medium=affiliate&utm_campaign=Lovebabbar
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  
 Sample Input 1 :
 1
 5
