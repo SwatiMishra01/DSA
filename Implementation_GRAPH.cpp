@@ -11,7 +11,7 @@ If 'N' = 3 and edges = {{2,1}, {2,0}}.
     //ans array will store all the adjacent nodes corresponding on indexes
     for(int i=0; i<m; i++){
         int u= edges[i][0];
-        int v= edges[i][1];
+        int v= edges[i][1]; 
         ans[u].push_back(v);
         ans[v].push_back(u);
     }
