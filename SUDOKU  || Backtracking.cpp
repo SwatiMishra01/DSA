@@ -4,7 +4,7 @@ A Sudoku solution must satisfy all the following conditions-
 2. Each of the digits 1-9 must occur exactly once in each column.
 3. Each of the digits 1-9 must occur exactly once in each of the 9, 3x3 sub-grids of the grid.
 
-  ----------------------------------------------------------------------------------------------------------------------------
+  ---------------------------------------------------------------------------------------------------------------------------- 
   📌 Step-by-step Logic:
 --> Empty Cell Dhoondo:
       -Poore grid mein ek empty cell (jisme value 0 ya '.') hai usko search karo.
