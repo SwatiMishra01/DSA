@@ -1,3 +1,6 @@
+
+             HOUSE ROBBERY II ( LEETCODE-213)
+
 # https://leetcode.com/problems/house-robber-ii/description/?envType=problem-list-v2&envId=dynamic-programming
 ------------------------  QUESTION---------------------------------------------------------------------------------
 // 🔸 Problem Understanding (House Robber II):
@@ -76,5 +79,45 @@ public:
             }
         }
         return max(solve(first),solve(second));
+    }
+};
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+                                                         HOUSE ROBBERY (LEETCODE-198)
+------------------------------------------------------------------------------------------------------------------------------------------------
+          only difference- the houses are not circularly connected
+          so no need of splitting in first and second
+# https://leetcode.com/problems/house-robber/description/?envType=problem-list-v2&envId=dynamic-programming
+
+
+
+
+
+
+
+class Solution {
+int solve(vector<int>& nums){
+     int n=nums.size();
+    int prev2=0;
+    int prev1=nums[0];
+
+    for(int i=1; i<n; i++){
+        int incl= prev2+nums[i];
+        int excl=prev1+0;
+
+        int ans=max(incl,excl);
+        prev2=prev1;
+        prev1=ans;
+    }
+    return prev1;
+}
+
+
+public:
+    int rob(vector<int>& nums) {
+        return solve(nums);
     }
 };
