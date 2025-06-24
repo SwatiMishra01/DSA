@@ -1,8 +1,32 @@
 # https://leetcode.com/problems/min-cost-climbing-stairs/
 ---------------------------------------------------------------------------------------------------
+
+   --------------------------------------------------------
+                  APPROACH 1-> RECURSION
+  --------------------------------------------------------
+  class Solution {
+public:
+int solve(vector<int>& cost, int n){
+    //base case
+    if(n==0)
+    return cost[0];
+    if(n==1)
+    return cost[1];
+ //recursion approach
+    int ans=min(solve(cost,n-1),solve(cost,n-2))+cost[n];
+    return ans;
+}
+    int minCostClimbingStairs(vector<int>& cost) {
+        int n=cost.size();
+        int ans=min (solve(cost,n-1), solve(cost,n-2));
+        return ans;    }
+};
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
   
   ---------------------------------------------------------
-  APPROACH 1-> RECURSION + MEMIOZATION  (TOP-DOWN APPROACH)
+  APPROACH 2-> RECURSION + MEMIOZATION  (TOP-DOWN APPROACH)
   ---------------------------------------------------------
 
   
@@ -39,7 +63,7 @@ int solve2(vector<int>& cost,int n,vector<int>&dp){
 ----------------------------------------------------------------------------------------------------------------------------------------------------
 
   ---------------------------------------------
-  APPROACH 2-> TABULATION  (BOTTOM UP APPROACH)
+  APPROACH 3-> TABULATION  (BOTTOM UP APPROACH)
   ---------------------------------------------
   class Solution {
 public:
@@ -68,3 +92,11 @@ int solve3(vector<int>& cost, int n){
        return solve3(cost,n);
     }
 };
+------------------------------------------------------------------------------------------------------------------
+
+        ----------------------------------------------
+            APPROACH-3 RECURSION
+         --------------------------------------------
+
+
+  
