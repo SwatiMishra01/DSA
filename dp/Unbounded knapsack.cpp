@@ -79,3 +79,39 @@ int unboundedKnapsack(int n, int w, vector<int> &profit, vector<int> &weight){
     }
     return dp[n-1][w];
 }
+
+T.C=O(N * W)
+S.C=O(N * W)
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------
+ ---------------------------------------
+  APPROACH 4-> SPACE OPTIMIZATION
+---------------------------------------------
+ // dp[indx][wt] = max(
+//    dp[indx - 1][wt],          // not_take ? previous row
+//    profit[indx] + dp[indx][wt - weight[indx]] // take ? same row
+// );
+
+
+int unboundedKnapsack(int n, int w, vector<int> &profit, vector<int> &weight){
+        vector<int> dp(w + 1, 0);
+
+   // Base case: fill dp[] for item 0
+    for (int wt = 0; wt <= w; wt++) {
+        dp[wt] = (wt / weight[0]) * profit[0];
+    }
+
+    for (int indx = 1; indx < n; indx++) {
+        for (int wt = 0; wt <= w; wt++) {
+            int not_take = dp[wt];
+            int take = 0;
+            if (weight[indx] <= wt)
+                take = profit[indx] + dp[wt - weight[indx]]; // same dp[] because it's unbounded
+            dp[wt] = max(not_take, take);
+        }
+    }
+
+    return dp[w];
+}
+
+T.C=O(N * W)
+ S.C=O(N )
