@@ -33,15 +33,15 @@ Node*convertarray2linkedlist(vector<int>arr){
 }
 
 // Function to print the length of linked list
-int length(Node*head){
-  int len=0;
-  Node*temp=head;
-  while(temp!=nullptr){
-    len++;
-    temp=temp->next;
-  }
-  return len;
-}
+// int length(Node*head){
+//   int len=0;
+//   Node*temp=head;
+//   while(temp!=nullptr){
+//     len++;
+//     temp=temp->next;
+//   }
+//   return len;
+// }
 
 // Function to search element in the linked list
 int search(Node*head, int val){
