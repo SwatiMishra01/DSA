@@ -1,5 +1,32 @@
 https://www.geeksforgeeks.org/problems/next-larger-element-1587115620/1
 
+
+-------------------------------------
+  APPROACH 1-> BRUTE FORCE
+------------------------------------
+  class Solution {
+  public:
+    vector<int> nextLargerElement(vector<int>& arr) {
+        int n=arr.size();
+        vector<int>res(n,-1);
+        for(int i=0; i<n; i++){
+            for(int j=i+1; j<n; j++){
+                if(arr[j]>arr[i]){
+                     res[i]=arr[j];
+                     break;
+                }
+            }
+        }
+        return res;
+        
+    }
+};
+T.C=O(N^2)
+S.C=O(N)
+
+---------------------------------------------
+  APPROACH 2-> MONOTONIC STACK
+---------------------------------------------
 class Solution {
   public:
     vector<int> nextLargerElement(vector<int>& arr) {
