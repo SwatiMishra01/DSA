@@ -1,5 +1,7 @@
 https://leetcode.com/problems/pascals-triangle/description/
 LEETCODE-118
+  https://leetcode.com/problems/pascals-triangle-ii/description/
+  LEETCODE-119
 
 pascal triangle-
                        1                 -> row 1
@@ -41,24 +43,25 @@ Space Complexity: O(1) as we are not using any extra space.
   -------------------------------------------
     VARIANT 2-> PRINTING ENTIRE ROW
   --------------------------------------------
-int nCr(int n, int r) {
-    long long res = 1;
-
-    // calculating nCr:
-    for (int i = 0; i < r; i++) {
-        res = res * (n - i);
-        res = res / (i + 1);
+class Solution {
+public:
+    int nCr(int n, int r) {
+        long long res = 1;
+        for (int i = 0; i < r; i++) {
+            res = res * (n - i);
+            res = res / (i + 1);
+        }
+        return (int)res;
     }
-    return res;
-}
 
-void pascalTriangle(int n) {
-    // printing the entire row n:
-    for (int c = 1; c <= n; c++) {
-        cout << nCr(n - 1, c - 1) << " ";
+    vector<int> getRow(int rowIndex) {
+        vector<int> row;
+        for (int c = 0; c <= rowIndex; c++) {
+            row.push_back(nCr(rowIndex, c));
+        }
+        return row;
     }
-    cout << "n";
-}
+};
 
 T.C: O(n*r), where n is the given row number, and r is the column index
 S.C: O(1)
