@@ -29,3 +29,37 @@ void inorder(TreeNode* root,vector<int>&ans){
        return ans;
     }
 };
+
+--------------------------------------
+     ITERATIVE-> USING ARRAY
+--------------------------------------
+     // Function to perform inorder traversal
+// of the tree and store values in 'arr'
+void inorder(Node* root, vector<int> &arr){
+    // If the current node is NULL
+    // (base case for recursion), return
+    if(root == nullptr){
+        return;
+    }
+    // Recursively traverse the left subtree
+    inorder(root->left, arr);
+    // Push the current node's
+    // value into the vector
+    arr.push_back(root->data);
+    // Recursively traverse 
+    // the right subtree
+    inorder(root->right, arr);
+}
+
+// Function to initiate inorder traversal
+// and return the resulting vector
+vector<int> inOrder(Node* root){
+    // Create an empty vector to
+    // store inorder traversal values
+    vector<int> arr;
+    // Call the inorder traversal function
+    inorder(root, arr);
+    // Return the resulting vector
+    // containing inorder traversal values
+    return arr;
+}
