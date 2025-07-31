@@ -112,4 +112,4 @@ BSTInfo largestBSTBT(Node *root) {
     }
 };
 T.C=O(N)
-S.C=O(N)
+S.C=O(1)
