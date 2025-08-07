@@ -1,7 +1,9 @@
 #include<unordered_map>
 #include<list>
 #include<queue>
-#include<vector>
+#include<vector>   --------------------------------------
+	              GIVEN SOURCE NODE->TERMINAL NODE
+	           --------------------------------------
 
 vector<int> shortestPath( vector<pair<int,int>> edges , int n , int m, int s , int t){
 	
@@ -62,3 +64,37 @@ vector<int> shortestPath( vector<pair<int,int>> edges , int n , int m, int s , i
 
 	
 }
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+https://www.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1
+        ----------------------------
+	SOURCE NODE TO EVERY NODE-> 
+	----------------------------
+	class Solution {
+public:
+    
+    vector<int> shortestPath(vector<vector<int>>& adj, int src) {
+        int V = adj.size();  // Number of nodes
+        vector<int> dist(V, -1);  // Distance from source to each node
+        vector<bool> visited(V, false);
+        queue<int> q;
+
+        q.push(src);
+        visited[src] = true;
+        dist[src] = 0;
+
+        while (!q.empty()) {
+            int node = q.front();
+            q.pop();
+
+            for (auto neighbour : adj[node]) {
+                if (!visited[neighbour]) {
+                    visited[neighbour] = true;
+                    dist[neighbour] = dist[node] + 1;
+                    q.push(neighbour);
+                }
+            }
+        }
+
+        return dist;
+    }
+};
