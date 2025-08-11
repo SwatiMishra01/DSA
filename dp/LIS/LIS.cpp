@@ -56,6 +56,8 @@ public:
         return f(0,-1,nums,dp);
     }
 };
+T.C=O(N^2)
+S.C=O(N^2)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
   -----------------------------
          TABULATION
@@ -88,5 +90,31 @@ public:
         return dp[0][0]; // Starting from index 0 with prev_indx = -1
     }
 };
+T.C=O(N^2)
+S.C=O(N^2)
+  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+        --------------------------------
+          USING BINARY SEARCH
+        -------------------------------
+        class Solution {
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector<int> sub; 
 
-  
+        for (int num : nums) {
+            // Find the position where num can be placed
+            auto it = lower_bound(sub.begin(), sub.end(), num);
+
+            if (it == sub.end()) {
+                sub.push_back(num);
+            } else {
+                // Replace the first element >= num
+                *it = num;
+            }
+        }
+
+        return sub.size(); 
+    }
+};
+T.C=	O(n log n)
+S.C=O(N)
