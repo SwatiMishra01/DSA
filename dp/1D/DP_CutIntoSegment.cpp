@@ -28,6 +28,32 @@ int cutSegments(int n, int x, int y, int z) {
  return ans;
 }
 
+---------------------------------------------------------------------------------------------------------------------
+	-------------------------------
+	       MEMOIZATION
+	-------------------------------
+	int solve(int n, int x, int y, int z, vector<int>& dp){
+    // base cases
+    if(n == 0) return 0;
+    if(n < 0) return INT_MIN;
 
+    // check memo
+    if(dp[n] != -1) return dp[n];
+
+    int a = solve(n-x, x, y, z, dp) + 1;
+    int b = solve(n-y, x, y, z, dp) + 1;
+    int c = solve(n-z, x, y, z, dp) + 1;
+
+    return dp[n] = max(a, max(b, c));
+}
+
+int cutSegments(int n, int x, int y, int z) {
+    vector<int> dp(n+1, -1);   // initialize memo table
+    int ans = solve(n, x, y, z, dp);
+
+    return (ans < 0) ? 0 : ans;
+}
+T.C=O(n)
+S.C=O(n)
 
   ------------------------------------------------------------------------------------------------------------------
